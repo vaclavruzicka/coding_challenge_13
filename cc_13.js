@@ -37,3 +37,17 @@ function createEmployeeCard(name, position){
 employeecontainer1.appendChild(createEmployeeCard("John Smith", "Sales Associate"))
 employeecontainer1.appendChild(createEmployeeCard("Brad Waters", "Manager"))
 employeecontainer1.appendChild(createEmployeeCard("Tom Winters", "CEO"))
+
+
+//Task 3 - Converting NodeLists to Array for Bulk Updates
+
+//Selecting all cards with the same class and making a node list out of them.
+const employeeCardNodeList = document.querySelectorAll(".employee-card")
+
+//Taking the node list and creating an array so that I can use array methods.
+const employeeCardArray = Array.from(employeeCardNodeList)
+
+//Using forEach so that I can change each of the card colors that are in the array.
+employeeCardArray.forEach((card) => {
+    card.style.backgroundColor = "BlueViolet"
+})
