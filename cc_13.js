@@ -22,8 +22,13 @@ function createEmployeeCard(name, position){
     //Creating a button that when clicked, will remove the employee's card.
     const removeButton = document.createElement("button")
     removeButton.textContent = "Remove"
-    removeButton.addEventListener("click", () => {
-        employeeCard.remove()
+
+    //Task 4 - Implementing removal of Employee Cards with Event Bubbling
+
+    //Makes it so that the remove button removes the card using removeChild().
+    removeButton.addEventListener("click", (event) => {
+        event.stopPropagation()
+        employeeCard.parentNode.removeChild(employeeCard)
     })
 
     //Adding the title, description, and remove button to the employee cards.
@@ -38,7 +43,6 @@ employeecontainer1.appendChild(createEmployeeCard("John Smith", "Sales Associate
 employeecontainer1.appendChild(createEmployeeCard("Brad Waters", "Manager"))
 employeecontainer1.appendChild(createEmployeeCard("Tom Winters", "CEO"))
 
-
 //Task 3 - Converting NodeLists to Array for Bulk Updates
 
 //Selecting all cards with the same class and making a node list out of them.
@@ -50,4 +54,11 @@ const employeeCardArray = Array.from(employeeCardNodeList)
 //Using forEach so that I can change each of the card colors that are in the array.
 employeeCardArray.forEach((card) => {
     card.style.backgroundColor = "BlueViolet"
+})
+
+//Task 4 - Continued 
+
+//Adds an event listener so that when a card is clicked, not on the remove button, there is a message that is console logged saying a card was clicked.
+employeecontainer1.addEventListener("click", (event) => {
+    console.log("Employee Card Clicked")
 })
